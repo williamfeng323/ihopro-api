@@ -1,0 +1,11 @@
+FROM node:9-slim
+
+ENV APP_DIR=/var/local/apps/
+
+RUN mkdir -p ${APP_DIR}
+
+WORKDIR ${APP_DIR}
+
+ADD ./build ${APP_DIR}
+
+CMD [ "./script/start.sh" ]
