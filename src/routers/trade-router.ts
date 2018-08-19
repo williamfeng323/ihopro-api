@@ -24,7 +24,9 @@ const tradeInfoRouter = router();
 tradeInfoRouter.route({
   method: 'POST',
   path: '/trade-info',
-  handler: tradeInfoService,
+  handler: async (ctx: router.Context ) => {
+    tradeInfoService(ctx);
+  },
   validate: {
     type: 'json',
     body: tradeInfoSchema,
