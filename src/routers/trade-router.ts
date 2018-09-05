@@ -1,5 +1,5 @@
 import * as Joi from 'joi';
-import * as router from 'koa-joi-router';
+import * as router from 'koa-router';
 import { tradeInfoService } from '../services/trade-info.service';
 
 const tradeInfoSchema = Joi.object({
@@ -20,14 +20,16 @@ const tradeInfoSchema = Joi.object({
   agentLevel: Joi.number().required().allow([1, 2, 3, 4]),
   usrMobileMask: Joi.string().required().max(11),
 });
-const tradeInfoRouter = router();
-tradeInfoRouter.route({
-  method: 'POST',
-  path: '/trade-info',
-  handler: tradeInfoService,
-  validate: {
-    type: 'json',
-    body: tradeInfoSchema,
-  },
-});
+const tradeInfoRouter = new router();
+// tradeInfoRouter.route({
+//   method: 'POST',
+//   path: '/trade-info',
+//   handler: async (ctx: router.Context ) => {
+//     tradeInfoService(ctx);
+//   },
+//   validate: {
+//     type: 'json',
+//     body: tradeInfoSchema,
+//   },
+// });
 export { tradeInfoRouter };
