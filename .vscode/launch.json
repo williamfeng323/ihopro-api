@@ -24,7 +24,7 @@
       ],
       "sourceMaps": true,
       "outFiles": [
-        "${workspaceRoot}/build/"
+        "${workspaceRoot}/build"
       ],
       "envFile": "${workspaceFolder}/environments/local.env"
     }

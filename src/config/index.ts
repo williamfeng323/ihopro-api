@@ -12,12 +12,11 @@ export const mongoConfig: IConfigMongo = {
   mongoUseDnsSeedlist: process.env.MONGO_USE_DNS_SEED_LIST === 'true',
 };
 
-const level = process.env.LOG_LEVEL || 'debug';
-
 export const logger = new winston.Logger({
+  level: process.env.LOG_LEVEL || 'debug',
   transports: [
     new winston.transports.Console({
-      level,
+      colorize: true,
       timestamp: true,
     }),
   ],

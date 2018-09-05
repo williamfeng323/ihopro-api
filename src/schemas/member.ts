@@ -1,5 +1,5 @@
 // import * as Joi from 'joi';
-import { Joi } from 'koa-joi-router';
+import * as Joi from 'joi';
 import { ObjectId } from 'mongodb';
 
 export enum MemberRole {
@@ -26,7 +26,7 @@ export const initMembershipValidator = Joi.object({
   phoneNumber: Joi.number().description('cell phone as login account'),
   email: Joi.string().email(),
   password: Joi.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
-    .error(new Error('Minimum eight characters, at least one uppercase letter, one lowercase letter and one number.')),
+    .description('Minimum eight characters, at least one uppercase letter, one lowercase letter and one number.'),
   firstName: Joi.string().required().description('名'),
   lastName: Joi.string().required().description('姓'),
   role: Joi.string().required().allow(Object.values(MemberRole))

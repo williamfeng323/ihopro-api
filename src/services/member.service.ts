@@ -10,7 +10,7 @@ export class MemberService {
   public async createMember (member: IMembership) {
     try {
       const memberModel = Member.collection();
-      memberModel.save(member);
+      return memberModel.save(member);
     } catch (err) {
       throw err;
     }
